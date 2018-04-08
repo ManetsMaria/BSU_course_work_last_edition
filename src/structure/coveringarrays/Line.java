@@ -11,7 +11,7 @@ public class Line {
     public Line(int size) {
         line = new String[size];
         for (int i = 0; i < size; i++){
-            line[i] = ".";
+            line[i] = "_";
         }
     }
 
@@ -34,10 +34,10 @@ public class Line {
             return false;
         }
         for (int i = 0; i < addLineChar.length; i++){
-            if (".".equals(addLineChar[i])){
+            if ("_".equals(addLineChar[i])){
                 continue;
             }
-            if (".".equals(line[i])){
+            if ("_".equals(line[i])){
                 line[i] = addLineChar[i];
                 continue;
             }
@@ -60,7 +60,7 @@ public class Line {
     public int getSize(){
         int counter = 0;
         for (int i = 0; i < line.length; i++){
-            if (!".".equals(line[i])){
+            if (!"_".equals(line[i])){
                 counter++;
             }
         }
@@ -72,7 +72,7 @@ public class Line {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < line.length; i++){
             String e = line[i];
-            if (!".".equals(e)){
+            if (!"_".equals(e)){
                 e = String.valueOf(Integer.valueOf(e) + 1);
             }
             stringBuilder.append(e);

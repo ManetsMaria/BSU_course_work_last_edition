@@ -1,6 +1,5 @@
 package action.rude;
 
-import action.horizontal.FindMaxParameter;
 import action.horizontal.H1;
 import action.horizontal.NextVertexChooser;
 import structure.coveringarrays.CoveringArrays;
@@ -16,7 +15,7 @@ public class ChainGo {
 
     public static CoveringArrays chainGo(Graph graph){
         CoveringArrays coveringArrays = new CoveringArrays();
-        int elementNumber = FindMaxParameter.findMaxParameter(graph);
+        int elementNumber = FindParameterMod.findMaxParameter(graph);
         while (!graph.isFinish()) {
             Element element = graph.get(elementNumber);
             List<Vertex> orderedList = H1.getOrderWithH1(element);
@@ -27,7 +26,7 @@ public class ChainGo {
                 Line curr = nextVertexChooser.getLineState(start, graph.getSize());
                 coveringArrays.addLine(curr);
             }
-            elementNumber = FindMaxParameter.findMaxParameter(graph);
+            elementNumber = FindParameterMod.findMaxParameter(graph);
         }
         return coveringArrays;
     }

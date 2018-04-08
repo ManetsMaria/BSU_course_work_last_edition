@@ -10,3 +10,19 @@ Chain Go:
 0.0
 0
 
+Chain Go:
+0.4
+7
+
+Chain Go:
+0.3
+13
+
+Chain Go:
+0.7
+27
+
+Chain Go:
+3.3
+6
+

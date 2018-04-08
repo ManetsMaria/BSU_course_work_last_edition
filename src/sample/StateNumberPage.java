@@ -1,7 +1,5 @@
 package sample;
 
-import action.horizontal.FirstStep;
-import action.vertical.SecondStep;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +10,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import structure.coveringarrays.CoveringArrays;
 import structure.coveringarrays.Line;
@@ -21,7 +20,6 @@ import structure.sample.ViewLine;
 import test.FullTest;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 public class StateNumberPage {
@@ -37,6 +35,10 @@ public class StateNumberPage {
     private Graph graph = new Graph();
 
     public void setElementsNumber() throws IOException {
+        if (!Validator.checkInput(elementsNumber.getText())){
+            show("Error", "incorrect input");
+            return;
+        }
         numberOfElements = Integer.valueOf(elementsNumber.getText());
         //System.out.println(numberOfElements);
         dynamic2Init();
@@ -45,6 +47,13 @@ public class StateNumberPage {
     public void setStatesNumber(){
         states = new int[numberOfElements];
         Scene scene = pane1.getScene();
+        for (int i = 0; i < numberOfElements; i++){
+            TextField textField = (TextField) scene.lookup("#textField" + i);
+            if (!Validator.checkInput(textField.getText())){
+                show("Error", "incorrect input in "+(i+1));
+                return;
+            }
+        }
         for (int i = 0; i < numberOfElements; i++){
             TextField textField = (TextField) scene.lookup("#textField" + i);
             states[i] = Integer.valueOf(textField.getText());
@@ -153,13 +162,21 @@ public class StateNumberPage {
                     State stateGraph2 = new State(element2, state2);
                     graph.add(stateGraph1, stateGraph2);
                 }
-                //System.out.println(list.getSelectionModel().getSelectedItems());
-                //System.out.println(depends.getSelectionModel().getSelectedItems());
             }
         });
         pane1.getChildren().add(list);
         pane1.getChildren().add(button);
         pane1.getChildren().add(depends);
         pane1.getChildren().add(save);
+    }
+
+    private void show(String header, String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("data information");
+        alert.setContentText(message);
+        alert.setHeaderText(header);
+        alert.setResizable(true);
+        alert.getDialogPane().setMinSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+        alert.show();
     }
 }
