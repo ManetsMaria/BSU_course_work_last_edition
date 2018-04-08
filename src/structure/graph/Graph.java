@@ -1,11 +1,19 @@
 package structure.graph;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Graph extends HashMap <Integer, Element> {
-    private Element element;
 
     public Graph() {
+    }
+
+    public Graph getCopy(){
+      Graph graph = new Graph();
+      for (Map.Entry<Integer, Element> e : this.entrySet()){
+          graph.put(e.getKey(), e.getValue().getClone());
+      }
+      return graph;
     }
 
     public int getSize() {

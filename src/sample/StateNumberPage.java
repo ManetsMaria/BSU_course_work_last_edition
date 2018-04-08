@@ -18,6 +18,7 @@ import structure.coveringarrays.Line;
 import structure.graph.Graph;
 import structure.graph.State;
 import structure.sample.ViewLine;
+import test.FullTest;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -122,16 +123,17 @@ public class StateNumberPage {
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 graph.finish();
-                CoveringArrays coveringArrays = FirstStep.fisrtStep(graph);
-                coveringArrays = SecondStep.secondStep(graph, coveringArrays);
-                System.out.println(coveringArrays);
+               // CoveringArrays coveringArrays = FirstStep.fisrtStep(graph);
+                //coveringArrays = SecondStep.secondStep(graph, coveringArrays);
+                CoveringArrays coveringArrays = FullTest.getTest(graph);
+                //System.out.println(coveringArrays);
                 List<Line> copyLine = coveringArrays.getCopyLines();
                 Controller.coveringArrayData.clear();
                 for (int i = 0; i < copyLine.size(); i++){
                     ViewLine viewLine = new ViewLine(i+1, copyLine.get(i));
                     Controller.coveringArrayData.add(viewLine);
                 }
-                System.out.println(Controller.coveringArrayData);
+                //System.out.println(Controller.coveringArrayData);
                 Stage stage = (Stage) pane1.getScene().getWindow();
                 stage.close();
             }

@@ -13,6 +13,14 @@ public class Element extends ArrayList<Vertex> {
         return counter;
     }
 
+    public Element getClone(){
+        Element element = new Element();
+        for (Vertex vertex: this){
+            element.add(vertex.getClone());
+        }
+        return element;
+    }
+
     public boolean init(int element, int numberStates){
         for (int i = 0; i < numberStates; i++){
             Vertex vertex = new Vertex(new State(element, i));

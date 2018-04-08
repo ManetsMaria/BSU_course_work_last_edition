@@ -14,6 +14,14 @@ public class Vertex implements Comparable <Vertex> {
         neighbors = new ArrayList<>();
     }
 
+    public Vertex getClone(){
+        Vertex vertex = new Vertex(this.state);
+        for (Vertex v: neighbors){
+            vertex.neighbors.add(v.getClone());
+        }
+        return vertex;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
