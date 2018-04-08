@@ -1,5 +1,6 @@
 package test;
 
+import action.rude.ChainGo;
 import action.vertical.SecondStep;
 import structure.coveringarrays.CoveringArrays;
 import structure.graph.Graph;
@@ -29,6 +30,16 @@ public class FullTest {
                 coveringArrays = curr;
             }
             curr = Step2Test.getTest(graph);
+            if (curr.getSize() < size){
+                size = curr.getSize();
+                coveringArrays = curr;
+            }
+            curr = PairGoTest.getTest(graph);
+            if (curr.getSize() < size){
+                size = curr.getSize();
+                coveringArrays = curr;
+            }
+            curr = ChainGoTest.getTest(graph);
             if (curr.getSize() < size){
                 size = curr.getSize();
                 coveringArrays = curr;

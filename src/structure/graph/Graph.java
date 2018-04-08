@@ -53,4 +53,13 @@ public class Graph extends HashMap <Integer, Element> {
             element.finish();
         }
     }
+
+    public boolean isFinish(){
+        for (Element e: this.values()){
+            if (!e.isFinish()){
+                return false;
+            }
+        }
+        return true;
+    }
 }

@@ -42,4 +42,13 @@ public class Element extends ArrayList<Vertex> {
         }
         return copy;
     }
+
+    public boolean isFinish(){
+        for (Vertex v: this){
+            if (!v.isFinish()){
+                return false;
+            }
+        }
+        return true;
+    }
 }

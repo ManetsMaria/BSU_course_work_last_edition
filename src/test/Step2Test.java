@@ -5,6 +5,7 @@ import action.vertical.SecondStep;
 import structure.coveringarrays.CoveringArrays;
 import structure.graph.Graph;
 import util.Const;
+import util.IntegrateKoef;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -34,6 +35,8 @@ public class Step2Test {
         bufferedWriter.newLine();
         bufferedWriter.newLine();
         bufferedWriter.close();
+
+        System.out.println(IntegrateKoef.calc((sum*1.0)/n, coveringArrays.getSize()));
 
         return coveringArrays;
     }

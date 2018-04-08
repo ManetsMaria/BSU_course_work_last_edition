@@ -88,4 +88,8 @@ public class Vertex implements Comparable <Vertex> {
         neighbors.clear();
         return true;
     }
+
+    public boolean isFinish(){
+        return neighbors.isEmpty();
+    }
 }

@@ -20,6 +20,10 @@ public class CoveringArrays {
         return false;
     }
 
+    private CoveringArrays(List <Line> lines){
+        this.lines = lines;
+    }
+
     @Override
     public String toString() {
         return "CoveringArrays{" +
@@ -37,5 +41,9 @@ public class CoveringArrays {
             copy.add(new Line(l.getLine()));
         }
         return copy;
+    }
+
+    public CoveringArrays getCopy(){
+        return new CoveringArrays(this.getCopyLines());
     }
 }
