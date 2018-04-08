@@ -16,7 +16,7 @@ import structure.sample.ViewLine;
 import java.io.IOException;
 
 public class Controller {
-    private ObservableList<ViewLine> coveringArrayData = FXCollections.observableArrayList();
+    public static ObservableList<ViewLine> coveringArrayData = FXCollections.observableArrayList();
 
     @FXML
     private TableView<ViewLine> tableLines;

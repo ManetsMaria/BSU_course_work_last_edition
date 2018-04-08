@@ -6,38 +6,42 @@ import util.MakeArrayCopy;
 import java.util.Arrays;
 
 public class Line {
-    private char [] line;
+    private String [] line;
 
     public Line(int size) {
-        line = new char[size];
+        line = new String[size];
         for (int i = 0; i < size; i++){
-            line[i] = '.';
+            line[i] = ".";
         }
+    }
+
+    public Line(String[] line){
+        this.line = line;
     }
 
     public boolean add(State state){
         if (state.getElement() > line.length){
             return false;
         }
-        line[state.getElement()] = (char) ('0' + state.getState());
+        line[state.getElement()] = String.valueOf(state.getState());
         return true;
     }
 
     public boolean add(Line combineLine){
-        char [] addLineChar = combineLine.getLine();
-        char [] line = getLine();
+        String [] addLineChar = combineLine.getLine();
+        String [] line = getLine();
         if (addLineChar.length != line.length){
             return false;
         }
         for (int i = 0; i < addLineChar.length; i++){
-            if (addLineChar[i] == '.'){
+            if (".".equals(addLineChar[i])){
                 continue;
             }
-            if (line[i] == '.'){
+            if (".".equals(line[i])){
                 line[i] = addLineChar[i];
                 continue;
             }
-            if (addLineChar[i] != line[i]){
+            if (!addLineChar[i].equals(line[i])){
                 return false;
             }
         }
@@ -45,8 +49,8 @@ public class Line {
         return true;
     }
 
-    public char[] getLine() {
-        char[] copy = new char[line.length];
+    public String[] getLine() {
+        String[] copy = new String[line.length];
         for (int i = 0; i < line.length; i++){
             copy[i] = line[i];
         }
@@ -56,7 +60,7 @@ public class Line {
     public int getSize(){
         int counter = 0;
         for (int i = 0; i < line.length; i++){
-            if (line[i] != '.'){
+            if (!".".equals(line[i])){
                 counter++;
             }
         }
@@ -65,8 +69,15 @@ public class Line {
 
     @Override
     public String toString() {
-        return "Line{" +
-                "line=" + Arrays.toString(line) +
-                '}';
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < line.length; i++){
+            String e = line[i];
+            if (!".".equals(e)){
+                e = String.valueOf(Integer.valueOf(e) + 1);
+            }
+            stringBuilder.append(e);
+            stringBuilder.append(" ");
+        }
+        return stringBuilder.toString();
     }
 }

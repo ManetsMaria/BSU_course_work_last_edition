@@ -30,4 +30,12 @@ public class CoveringArrays {
     public int getSize(){
         return lines.size();
     }
+
+    public List<Line> getCopyLines(){
+        List <Line> copy = new ArrayList<>();
+        for (Line l: lines){
+            copy.add(new Line(l.getLine()));
+        }
+        return copy;
+    }
 }
